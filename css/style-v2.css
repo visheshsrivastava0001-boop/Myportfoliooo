@@ -4,20 +4,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins' sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
-img{
+
+img {
     max-width: 100%;
     height: auto;
 }
 
+/* ---------------- PORTFOLIO CONTAINER ---------------- */
 .portfolio-container {
     min-height: 100vh;
     width: 100%;
     display: flex;
-    
 }
 
+/* ---------------- NAVBAR ---------------- */
 .navlist {
     display: flex;
     gap: 3.5rem;
@@ -26,14 +28,16 @@ img{
     justify-content: center;
     align-items: center;
     position: fixed;
+    top: 0;
+    z-index: 100;
+    background: #262526;
 }
 
-.navlist li{
+.navlist li {
     list-style: none;
-    color: #fff;
 }
 
-.navlist li a{
+.navlist li a {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1rem;
@@ -41,101 +45,61 @@ img{
     position: relative;
 }
 
-.left-container , .right-container{
+.navlist li a::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    height: .1rem;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .5s;
+}
+
+.navlist li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* ---------------- LEFT + RIGHT CONTAINER ---------------- */
+.left-container,
+.right-container {
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.left-container{
+.left-container {
     background: #262526;
     width: 70%;
     padding-left: 3rem;
+    flex-direction: column;
 }
 
-.right-container{
-    background: linear-gradient(-45deg, #3877ff, #262526  70%);
+.right-container {
+    background: linear-gradient(-45deg, #3877ff, #262526 70%);
     width: 30%;
-
+    justify-content: center;
+    align-items: center;
 }
 
-.icons .fa-brands {
-    color: #bbb;
-    font-size: 1.7rem;
-}
-
+/* ---------------- ICONS ---------------- */
 .icons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3rem;
-
-}
-.content{
-    margin-left: 4rem;
-}
-.content .intro{
-    font-size: 1.5rem;
-    color: #fff;
-
+    margin-bottom: 2rem;
 }
 
-.content .intro span{
-    color: #5db9ee;
-
-}
-.content h1 {
-    font-size: 3rem;
-    color: #5db9ee;
-    padding-right: 10px;
-}
-.content h2 {
-    
-    padding-right: 10px;
-}
-
-.content .detail {
-    font-size: 1.1rem;
-    color: #fff;
-    max-width: 38rem;
-    margin: 1.1rem 0 3rem 0;
-    line-height: 1.8rem;
-    text-align: center;
-
-}
-
-.btn-container button {
-    border: .1rem solid #5db9ee;
-    font-size: 1.1rem;
-    padding: .8rem 1.5rem;
-    border-radius: .5rem;
-    cursor: pointer;
-    transition: .5s ease;
-}
-
-button:nth-child(1) {
-
-    background: #5db9ee;
-    color: #3877ff;
-
-}
-
-button:nth-child(2) {
-    background: #262526;
-    color: #5db9ee;
-    margin-left: 2rem;
-}   
-
-button:nth-child(1):hover {
-    background: transparent;
-    color: #262526;
-
-}
-
-button:nth-child(2):hover {
-    background: #3877ff;
-    color: #262526;
+.icons .fa-brands {
+    color: #bbb;
+    font-size: 1.7rem;
+    transition: all 0.3s ease;
 }
 
 .icons .fa-brands:hover {
@@ -145,103 +109,156 @@ button:nth-child(2):hover {
     -webkit-text-fill-color: transparent;
 }
 
+/* ---------------- CONTENT ---------------- */
+.content {
+    margin-left: 4rem;
+    text-align: left;
+}
+
+.content .intro {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.content .intro span {
+    color: #5db9ee;
+}
+
+.content h1 {
+    font-size: 3rem;
+    color: #5db9ee;
+}
+
+.content .detail {
+    font-size: 1.1rem;
+    color: #fff;
+    max-width: 38rem;
+    margin: 1.1rem 0 3rem 0;
+    line-height: 1.8rem;
+}
+
+.content .detail li {
+    margin-bottom: 0.5rem;
+}
+
+/* ---------------- BUTTONS ---------------- */
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-container button {
+    border: .1rem solid #5db9ee;
+    font-size: 1.1rem;
+    padding: .8rem 1.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .5s ease;
+    background: #262526;
+    color: #5db9ee;
+}
+
+.btn-container button:first-child {
+    background: #5db9ee;
+    color: #3877ff;
+}
+
+.btn-container button:first-child:hover {
+    background: transparent;
+    color: #262526;
+}
+
+.btn-container button:nth-child(2):hover {
+    background: #3877ff;
+    color: #262526;
+}
+
+.btn-container a.btn {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------------- DESIGN / CIRCLES ---------------- */
 .design .circle {
     aspect-ratio: 1;
     position: absolute;
     border-radius: 50%;
     top: 50%;
     left: 70%;
-    transform:translate(-50%, -50%) ;
+    transform: translate(-50%, -50%);
 }
 
-.circle:nth-child(1){
-    background-color: linear-gradient(90deg,  transparent 50%, #262526 50%);
-    width:38rem;
+.circle:nth-child(1) {
+    background: linear-gradient(90deg, transparent 50%, #262526 50%);
+    width: 38rem;
 }
-.circle:nth-child(2){
+
+.circle:nth-child(2) {
     width: 30rem;
     background-color: rgb(245, 242, 242);
     background-size: 100%;
     background-repeat: no-repeat;
     border: .1rem solid white;
     box-shadow: 0 0 1rem #fff,
-    0 0 2rem #3877ff ,
-    inset 0 0 2rem #3877ff,
-    0 0 2rem #3877ff;
+                0 0 2rem #3877ff,
+                inset 0 0 2rem #3877ff,
+                0 0 2rem #3877ff;
 }
-.navlist li a::after{
-    content: "";
-    position: absolute;
-    background: #fff;
-    width: 100%;
-    height: .1rem;
-    left: 0;
-bottom: -5px;
-transform: scaleX(0);
-transform-origin: bottom right;
-transition: transform .5s;
-}
-.navlist li a:hover::after
-{
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-@media (max-width: 768px){
 
-  /* Layout column me */
-  .portfolio-container{
-    flex-direction: column;
-  }
+/* ---------------- MEDIA QUERY FOR MOBILE ---------------- */
+@media (max-width: 768px) {
+    .portfolio-container {
+        flex-direction: column;
+    }
 
-  .left-container,
-  .right-container{
-    width: 100%;
-    height: auto;
-    padding: 2rem 1rem;
-  }
+    .left-container,
+    .right-container {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-  /* Navbar fix */
-  .navlist{
-    position: relative;
-    height: auto;
-    gap: 1.5rem;
-    padding: 1rem 0;
-  }
+    .navlist {
+        position: relative;
+        height: auto;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        flex-wrap: wrap;
+    }
 
-  /* Content center */
-  .content{
-    margin-left: 0;
-    text-align: center;
-  }
+    .content {
+        margin-left: 0;
+        text-align: center;
+    }
 
-  .content h1{
-    font-size: 2rem;
-  }
+    .content h1 {
+        font-size: 2rem;
+    }
 
-  .content .detail{
-    max-width: 100%;
-    text-align: center;
-  }
+    .content .detail {
+        max-width: 100%;
+        line-height: 2rem;
+    }
 
-  /* Buttons stack */
-  .btn-container{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+    .btn-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-  button:nth-child(2){
-    margin-left: 0;
-  }
+    button:nth-child(2) {
+        margin-left: 0;
+    }
 
-  /* ICONS horizontal */
-  .icons{
-    flex-direction: row;
-    margin-bottom: 1.5rem;
-  }
+    .icons {
+        flex-direction: row;
+        margin-bottom: 1.5rem;
+    }
 
-  /* 🔴 MOST IMPORTANT: circles hata do */
-  .design{
-    display: none;
-  }
+    .design {
+        display: none;
+    }
 }
